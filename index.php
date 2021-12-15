@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -245,7 +244,7 @@
             var postalCode = $('#postalCode').val()
             var province = $('#province').val()
             var phone = $('#phone').val()
-            var phoneSecond = $('#phoneSecond').val()
+            var phoneSecond = $('#phoneSecond').val('')
             var interested = ''
 
             var very_required = [fname, lname, gender, faith, idNumber, houseNo, villageNo, road, subDistrict, district, province, phone]
@@ -272,29 +271,39 @@
                             $('#warming').hide();
 
 
-                            var data = '{'
+                            var data = '['
+                            data += '{'
+                            data += '"personal_information":' + '[' + '{'
+                            data += '"idnumber":' + '"' + idNumber + '"' + ','
                             data += '"nametitle":' + '"' + nameTitle + '"' + ','
                             data += '"firstname":' + '"' + fname + '"' + ','
                             data += '"lastname":' + '"' + lname + '"' + ','
                             data += '"gender":' + '"' + gender + '"' + ','
                             data += '"faith":' + '"' + faith + '"' + ','
+                            data += '"phone":' + '"' + phone + '"' + ','
+                            data += '"phoneSecond":' + '"' + phoneSecond + '"'
+                            data += '}' + ']' + ','
 
                             data += '"interested":' + '[' + array
                             data += ']' + ','
 
-                            data += '"idnumber":' + '"' + idNumber + '"' + ','
+                            data += '"address":' + '[' + '{'
                             data += '"houseno":' + '"' + houseNo + '"' + ','
                             data += '"villageno":' + '"' + villageNo + '"' + ','
                             data += '"road":' + '"' + road + '"' + ','
                             data += '"subdistrict":' + '"' + subDistrict + '"' + ','
                             data += '"district":' + '"' + district + '"' + ','
                             data += '"postalCode":' + '"' + postalCode + '"' + ','
-                            data += '"province":' + '"' + province + '"' + ','
-                            data += '"phone":' + '"' + phone + '"' + ','
-                            data += '"phoneSecond":' + '"' + phoneSecond + '"'
+                            data += '"province":' + '"' + province + '"'
+                            data += '}' + ']'
+
                             data += '}'
+                            data += ']'
                             data = JSON.parse(data)
                             console.log(data)
+                            $('#submit').hide();
+                            $('.success').show()
+                            $('#warming').hide();
                         }
                     }
                     len_vr -= 1
